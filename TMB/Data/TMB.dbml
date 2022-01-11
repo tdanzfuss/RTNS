@@ -1,0 +1,383 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="TMB" Class="TMBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.\SQLExpress;Initial Catalog=TMB;Integrated Security=True" SettingsObjectName="TMB.Properties.Settings" SettingsPropertyName="TMBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Status" Member="Status">
+    <Type Name="Status">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Status_Transaction" Member="Transactions" ThisKey="ID" OtherKey="Status" Type="Transaction" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Side" Member="Sides">
+    <Type Name="Side">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Seq" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Side_TransactionLeg" Member="TransactionLegs" ThisKey="ID" OtherKey="TransactionSide" Type="TransactionLeg" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Product" Member="Products">
+    <Type Name="Product">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="IsMultiLeg" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Product_Transaction" Member="Transactions" ThisKey="ID" OtherKey="ProductType" Type="Transaction" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Reports" Member="Reports">
+    <Type Name="Report">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Seq" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IntegrationTemplates" Member="IntegrationTemplates">
+    <Type Name="IntegrationTemplate">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Command" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Version" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RTNSNotificationType" Member="RTNSNotificationTypes">
+    <Type Name="RTNSNotificationType">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="RTNSNotificationType_BankUser" Member="BankUsers" ThisKey="ID" OtherKey="ElectronicType" Type="BankUser" />
+      <Association Name="RTNSNotificationType_BankUser1" Member="BankUsers1" ThisKey="ID" OtherKey="ManualType" Type="BankUser" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Bank" Member="Banks">
+    <Type Name="Bank">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Code" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="InternalID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SFNName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="FDCName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Bank_BankUser" Member="BankUsers" ThisKey="ID" OtherKey="BankID" Type="BankUser" />
+      <Association Name="Bank_TransactionLeg" Member="TransactionLegs" ThisKey="ID" OtherKey="BuyerID" Type="TransactionLeg" />
+      <Association Name="Bank_TransactionLeg1" Member="TransactionLegs1" ThisKey="ID" OtherKey="SellerID" Type="TransactionLeg" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RoundingMode" Member="RoundingModes">
+    <Type Name="RoundingMode">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="RoundingMode_Currency" Member="Currencies" ThisKey="ID" OtherKey="RoundingMode" Type="Currency" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Currency" Member="Currencies">
+    <Type Name="Currency">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Code" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="Symbol" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="DecimalPlaces" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RoundingMode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Currency_TransactionLeg" Member="TransactionLegs" ThisKey="ID" OtherKey="BuyerCurrency" Type="TransactionLeg" />
+      <Association Name="Currency_TransactionLeg1" Member="TransactionLegs1" ThisKey="ID" OtherKey="SellerCurrency" Type="TransactionLeg" />
+      <Association Name="Currency_TransactionFix" Member="TransactionFixes" ThisKey="ID" OtherKey="SettlementCurrency" Type="TransactionFix" />
+      <Association Name="RoundingMode_Currency" Member="RoundingMode1" ThisKey="RoundingMode" OtherKey="ID" Type="RoundingMode" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Users" Member="Users">
+    <Type Name="User">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Username" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="InternalID" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Fullname" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="" Member="ReportParameters">
+    <Type Name="ReportParameters">
+      <Column Name="FromCompany" Type="System.String" CanBeNull="false" />
+      <Column Name="FromPerson" Type="System.String" CanBeNull="false" />
+      <Column Name="ToCompany" Type="System.String" CanBeNull="false" />
+      <Column Name="ToPerson" Type="System.String" CanBeNull="false" />
+      <Column Name="Tel" Type="System.String" CanBeNull="false" />
+      <Column Name="Fax" Type="System.String" CanBeNull="false" />
+      <Column Name="Product" Type="System.String" CanBeNull="false" />
+      <Column Name="Date" Type="System.String" CanBeNull="false" />
+      <Column Name="AddressLine1" Type="System.String" CanBeNull="false" />
+      <Column Name="AddressLine2" Type="System.String" CanBeNull="false" />
+      <Column Name="AddressLine3" Type="System.String" CanBeNull="false" />
+      <Column Name="AddressLine4" Type="System.String" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vwDealConfirmation" Member="vwDealConfirmations">
+    <Type Name="vwDealConfirmation">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TransactionDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="BuyerBrokerage" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SellerBrokerage" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BuyerName" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="SellerName" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="BuyerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SellerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BuyerCurrency" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SellerCurrency" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Rate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ActionDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Term" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Broker" Member="Brokers">
+    <Type Name="Broker">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="BrokerCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ContactDetails" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="ContactDetail_Broker" Member="ContactDetail" ThisKey="ContactDetails" OtherKey="ID" Type="ContactDetail" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ContactDetails" Member="ContactDetails">
+    <Type Name="ContactDetail">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Tel" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Fax" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Address1" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Address2" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Address3" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Address4" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Association Name="ContactDetail_Broker" Member="Brokers" ThisKey="ID" OtherKey="ContactDetails" Type="Broker" />
+      <Association Name="ContactDetail_BankUser" Member="BankUsers" ThisKey="ID" OtherKey="ContactDetails" Type="BankUser" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BankUsers" Member="BankUsers">
+    <Type Name="BankUser">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="InternalID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="BankID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FullName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="ManualType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ElectronicType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContactDetails" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="BankUser_TransactionLeg" Member="TransactionLegs" ThisKey="ID" OtherKey="BuyerPersonID" Type="TransactionLeg" />
+      <Association Name="BankUser_TransactionLeg1" Member="TransactionLegs1" ThisKey="ID" OtherKey="SellerPersonID" Type="TransactionLeg" />
+      <Association Name="Bank_BankUser" Member="Bank" ThisKey="BankID" OtherKey="ID" Type="Bank" IsForeignKey="true" />
+      <Association Name="ContactDetail_BankUser" Member="ContactDetail" ThisKey="ContactDetails" OtherKey="ID" Type="ContactDetail" IsForeignKey="true" />
+      <Association Name="RTNSNotificationType_BankUser" Member="RTNSNotificationType" ThisKey="ElectronicType" OtherKey="ID" Type="RTNSNotificationType" IsForeignKey="true" />
+      <Association Name="RTNSNotificationType_BankUser1" Member="RTNSNotificationType1" ThisKey="ManualType" OtherKey="ID" Type="RTNSNotificationType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vwDealTickets" Member="vwDealTickets">
+    <Type Name="vwDealTicket">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TransactionDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="BuyerBrokerage" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SellerBrokerage" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BuyerName" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="SellerName" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="BuyerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SellerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BuyerCurrency" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SellerCurrency" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Rate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ActionDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Term" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vwDealConfirmationPerBankUser" Member="vwDealConfirmationPerBankUsers">
+    <Type Name="vwDealConfirmationPerBankUser">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TransactionDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ProductName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="BuyerBrokerage" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SellerBrokerage" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DealID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DealName" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="DealPersonName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DealTel" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DealFax" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="BuyerName" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="SellerName" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="SellerPersonName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="BuyerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SellerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BuyerCurrency" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="SellerCurrency" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Rate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ActionDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Term" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RequestLog" Member="RequestLogs">
+    <Type Name="RequestLog">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TransactionID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RequestMessage" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="RequestDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ResponseLog" Member="ResponseLogs">
+    <Type Name="ResponseLog">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TransactionID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RequestID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ResponseMessage" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ResponseDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ResponseStatus" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ErrorMessage" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SubscribtionLog" Member="SubscribtionLogs">
+    <Type Name="SubscribtionLog">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Message" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DateReceived" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TransactionID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateProcessed" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AmountType" Member="AmountTypes">
+    <Type Name="AmountType">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Code" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="Multiplier" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="AmountType_TransactionLeg" Member="TransactionLegs" ThisKey="ID" OtherKey="AmountType" Type="TransactionLeg" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TransactionLeg" Member="TransactionLegs">
+    <Type Name="TransactionLeg">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TransactionID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ActionDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="BuyerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SellerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BuyerCurrency" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SellerCurrency" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Rate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Term" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TransactionSide" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AmountType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BuyerBrokerage" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SellerBrokerage" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BuyerPersonID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SellerPersonID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ForwardPoints" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="AmountType_TransactionLeg" Member="AmountType1" ThisKey="AmountType" OtherKey="ID" Type="AmountType" IsForeignKey="true" />
+      <Association Name="Bank_TransactionLeg" Member="Bank" ThisKey="BuyerID" OtherKey="ID" Type="Bank" IsForeignKey="true" />
+      <Association Name="Bank_TransactionLeg1" Member="Bank1" ThisKey="SellerID" OtherKey="ID" Type="Bank" IsForeignKey="true" />
+      <Association Name="BankUser_TransactionLeg" Member="BankUser" ThisKey="BuyerPersonID" OtherKey="ID" Type="BankUser" IsForeignKey="true" />
+      <Association Name="BankUser_TransactionLeg1" Member="BankUser1" ThisKey="SellerPersonID" OtherKey="ID" Type="BankUser" IsForeignKey="true" />
+      <Association Name="Currency_TransactionLeg" Member="Currency" ThisKey="BuyerCurrency" OtherKey="ID" Type="Currency" IsForeignKey="true" />
+      <Association Name="Currency_TransactionLeg1" Member="Currency1" ThisKey="SellerCurrency" OtherKey="ID" Type="Currency" IsForeignKey="true" />
+      <Association Name="Side_TransactionLeg" Member="Side" ThisKey="TransactionSide" OtherKey="ID" Type="Side" IsForeignKey="true" />
+      <Association Name="Transaction_TransactionLeg" Member="Transaction" ThisKey="TransactionID" OtherKey="ID" Type="Transaction" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TermDates" Member="TermDates">
+    <Type Name="TermDate">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TermID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ConfigDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ValueDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Term_TermDate" Member="Term" ThisKey="TermID" OtherKey="ID" Type="Term" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Terms" Member="Terms">
+    <Type Name="Term">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Increment" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Term_TermDate" Member="TermDates" ThisKey="ID" OtherKey="TermID" Type="TermDate" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CurrencyScale" Member="CurrencyScales">
+    <Type Name="CurrencyScale">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="firstCurrency" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="secondCurrency" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="forwardScalePnts" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="inverseScalePnts" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[Transaction]" Member="Transactions">
+    <Type Name="Transaction">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProductType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TransactionDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TransactionReference" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CreatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Message" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RTNSReference" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SubStatus" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="BaseCurrency" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DealtCurrency" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Scale" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="spotdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Transaction_TransactionLeg" Member="TransactionLegs" ThisKey="ID" OtherKey="TransactionID" Type="TransactionLeg" />
+      <Association Name="Transaction_TransactionFix" Member="TransactionFixes" ThisKey="ID" OtherKey="TransactionID" Type="TransactionFix" Cardinality="One" />
+      <Association Name="Transaction_TransactionMM" Member="TransactionMMs" ThisKey="ID" OtherKey="TransactionID" Type="TransactionMM" Cardinality="One" />
+      <Association Name="Product_Transaction" Member="Product" ThisKey="ProductType" OtherKey="ID" Type="Product" IsForeignKey="true" />
+      <Association Name="Status_Transaction" Member="Status1" ThisKey="Status" OtherKey="ID" Type="Status" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vwDealStatus" Member="vwDealStatus">
+    <Type Name="vwDealStatus">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TransactionReference" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TransactionDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="BuyerName" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="SellerName" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="BuyerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SellerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FixingCentre" Member="FixingCentres">
+    <Type Name="FixingCentre">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="Varchar(500)" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="Varchar(50)" CanBeNull="false" />
+      <Association Name="FixingCentre_TransactionFix" Member="TransactionFixes" ThisKey="ID" OtherKey="FixingCentreID" Type="TransactionFix" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TransactionFix" Member="TransactionFixes">
+    <Type Name="TransactionFix">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TransactionID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FixingCentreID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FixingDays" Type="System.Int32" DbType="Int" CanBeNull="false" />
+      <Column Name="FixingDate" Type="System.DateTime" DbType="DateTime" CanBeNull="false" />
+      <Column Name="SettlementCurrency" Type="System.Int32" DbType="Int" CanBeNull="false" />
+      <Association Name="Transaction_TransactionFix" Member="Transaction" ThisKey="TransactionID" OtherKey="ID" Type="Transaction" IsForeignKey="true" />
+      <Association Name="FixingCentre_TransactionFix" Member="FixingCentre" ThisKey="FixingCentreID" OtherKey="ID" Type="FixingCentre" IsForeignKey="true" />
+      <Association Name="Currency_TransactionFix" Member="Currency" ThisKey="SettlementCurrency" OtherKey="ID" Type="Currency" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="" Member="PaymentFrequencyLookups">
+    <Type Name="PaymentFrequencyLookup">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="false" />
+      <Association Name="PaymentFrequencyLookup_TransactionMM" Member="TransactionMMs" ThisKey="ID" OtherKey="PaymentFrequency" Type="TransactionMM" />
+    </Type>
+  </Table>
+  <Table Name="" Member="TransactionMMs">
+    <Type Name="TransactionMM">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TransactionID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DaysPerYear" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PaymentFrequency" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InterestAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="PaymentFrequencyLookup_TransactionMM" Member="PaymentFrequencyLookup" ThisKey="PaymentFrequency" OtherKey="ID" Type="PaymentFrequencyLookup" IsForeignKey="true" />
+      <Association Name="Transaction_TransactionMM" Member="Transaction" ThisKey="TransactionID" OtherKey="ID" Type="Transaction" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

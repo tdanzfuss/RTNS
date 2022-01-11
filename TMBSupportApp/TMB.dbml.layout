@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="TMB">
+  <DataContextMoniker Name="/TMBDataContext" />
+  <nestedChildShapes>
+    <classShape Id="a5aa78bc-0a67-4216-81e2-cd5a9ed80337" absoluteBounds="0.75, 1, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/TMBDataContext/Bank" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0e32b91b-afbe-4d8e-9fec-6c528dbe8851" absoluteBounds="0.765, 1.46, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="564766a6-ef91-4fb2-86c9-67958a316e17" absoluteBounds="3.5, 1, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/TMBDataContext/BankUser" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cf5f6a22-6801-4852-8a8c-3e0c76a7daf1" absoluteBounds="3.515, 1.46, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 2.07774983723958); (3.5 : 2.07774983723958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/TMBDataContext/Bank/Bank_BankUser" />
+      <nodes>
+        <classShapeMoniker Id="a5aa78bc-0a67-4216-81e2-cd5a9ed80337" />
+        <classShapeMoniker Id="564766a6-ef91-4fb2-86c9-67958a316e17" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

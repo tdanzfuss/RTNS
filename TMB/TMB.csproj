@@ -1,0 +1,337 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2EF369A0-20F6-41A5-B7D1-125B17522401}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TMB</RootNamespace>
+    <AssemblyName>TMB</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>reutersApp.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controls\Admin\CurrencyControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Admin\CurrencyControl.Designer.cs">
+      <DependentUpon>CurrencyControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Admin\CurrencyListControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Admin\CurrencyListControl.Designer.cs">
+      <DependentUpon>CurrencyListControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Admin\CurrencyScale.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Admin\CurrencyScale.Designer.cs">
+      <DependentUpon>CurrencyScale.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Admin\ReceiversControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Admin\ReceiversControl.Designer.cs">
+      <DependentUpon>ReceiversControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Admin\FixingCentersListControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Admin\FixingCentersListControl.Designer.cs">
+      <DependentUpon>FixingCentersListControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Admin\ReceiversListControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Admin\ReceiversListControl.Designer.cs">
+      <DependentUpon>ReceiversListControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Admin\TermDateControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Admin\TermDateControl.Designer.cs">
+      <DependentUpon>TermDateControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Admin\UserEditControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Admin\UserEditControl.Designer.cs">
+      <DependentUpon>UserEditControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Admin\UserListControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Admin\UserListControl.Designer.cs">
+      <DependentUpon>UserListControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DealDetailControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\DealDetailControl.Designer.cs">
+      <DependentUpon>DealDetailControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DealListControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\DealListControl.Designer.cs">
+      <DependentUpon>DealListControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\IPopupForm.cs" />
+    <Compile Include="Controls\ReportFilterControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ReportFilterControl.Designer.cs">
+      <DependentUpon>ReportFilterControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ReportListControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ReportListControl.Designer.cs">
+      <DependentUpon>ReportListControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ReportViewerControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ReportViewerControl.Designer.cs">
+      <DependentUpon>ReportViewerControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Data\TMB.cs">
+      <DependentUpon>TMB.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Data\TMB.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TMB.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainFrm.Designer.cs">
+      <DependentUpon>MainFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopupForm.Designer.cs">
+      <DependentUpon>PopupForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\ReportData.cs" />
+    <Compile Include="Reuters\RTNSConnection.cs" />
+    <Compile Include="Reuters\RTNSReferenceFile.cs" />
+    <Compile Include="Reuters\RTNSResponseMessage.cs" />
+    <EmbeddedResource Include="Controls\Admin\CurrencyControl.resx">
+      <DependentUpon>CurrencyControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Admin\CurrencyListControl.resx">
+      <DependentUpon>CurrencyListControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Admin\CurrencyScale.resx">
+      <DependentUpon>CurrencyScale.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Admin\ReceiversControl.resx">
+      <DependentUpon>ReceiversControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Admin\FixingCentersListControl.resx">
+      <DependentUpon>FixingCentersListControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Admin\ReceiversListControl.resx">
+      <DependentUpon>ReceiversListControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Admin\TermDateControl.resx">
+      <DependentUpon>TermDateControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Admin\UserEditControl.resx">
+      <DependentUpon>UserEditControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Admin\UserListControl.resx">
+      <DependentUpon>UserListControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\DealDetailControl.resx">
+      <DependentUpon>DealDetailControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\DealListControl.resx">
+      <DependentUpon>DealListControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\dealStatusSheet.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\dealticketsheet.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\dealconfirmationPerBankUser.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\dealconfirmation.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\dealticket.rdlc" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Data\TMB.dbml.layout">
+      <DependentUpon>TMB.dbml</DependentUpon>
+    </None>
+    <EmbeddedResource Include="Controls\ReportFilterControl.resx">
+      <DependentUpon>ReportFilterControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ReportListControl.resx">
+      <DependentUpon>ReportListControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ReportViewerControl.resx">
+      <DependentUpon>ReportViewerControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainFrm.resx">
+      <DependentUpon>MainFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopupForm.resx">
+      <DependentUpon>PopupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Data\TMB.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>TMB.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\DataSources\TMB.Data.Bank.datasource" />
+    <None Include="Properties\DataSources\TMB.Data.BankUser.datasource" />
+    <None Include="Properties\DataSources\TMB.Data.Currency.datasource" />
+    <None Include="Properties\DataSources\TMB.Data.CurrencyScale.datasource" />
+    <None Include="Properties\DataSources\TMB.Data.IntegrationTemplate.datasource" />
+    <None Include="Properties\DataSources\TMB.Data.Product.datasource" />
+    <None Include="Properties\DataSources\TMB.Data.Report.datasource" />
+    <None Include="Properties\DataSources\TMB.Data.ReportParameters.datasource" />
+    <None Include="Properties\DataSources\TMB.Data.RoundingMode.datasource" />
+    <None Include="Properties\DataSources\TMB.Data.RTNSNotificationType.datasource" />
+    <None Include="Properties\DataSources\TMB.Data.Status.datasource" />
+    <None Include="Properties\DataSources\TMB.Data.Term.datasource" />
+    <None Include="Properties\DataSources\TMB.Data.TermDate.datasource" />
+    <None Include="Properties\DataSources\TMB.Data.Transaction.datasource" />
+    <None Include="Properties\DataSources\TMB.Data.User.datasource" />
+    <None Include="Properties\DataSources\TMB.Data.vwDealConfirmation.datasource" />
+    <None Include="Properties\DataSources\TMB.Data.vwDealConfirmationPerBankUser.datasource" />
+    <None Include="Properties\DataSources\TMB.Data.vwDealStatus.datasource" />
+    <None Include="Properties\DataSources\TMB.Data.vwDealTicket.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Reuters.png" />
+    <Content Include="reutersApp.ico" />
+    <Content Include="ReutersLogo1.ico" />
+    <Content Include="reuters_orange.ico" />
+    <Content Include="TMB.ico" />
+    <None Include="img\User_small.png" />
+    <None Include="img\User.png" />
+    <None Include="Resources\hline.png" />
+    <None Include="img\warning.png" />
+    <None Include="img\error.png" />
+    <None Include="img\ok.png" />
+    <None Include="img\1378922040_17220.ico" />
+    <None Include="img\1378922100_17223.ico" />
+    <None Include="img\1378922159_27855.ico" />
+    <None Include="img\1378922198_27874.ico" />
+    <None Include="img\1378922239_27860.ico" />
+    <None Include="img\coins.png" />
+    <None Include="img\invoice.png" />
+    <None Include="img\Key.png" />
+    <None Include="img\Next.png" />
+    <None Include="img\Remove.png" />
+    <None Include="img\dollar.png" />
+    <None Include="img\coins_small.png" />
+    <None Include="img\invoice_small.png" />
+    <None Include="img\Settings.png" />
+    <None Include="img\Settings_small.png" />
+    <None Include="img\Receivers_small.png" />
+    <None Include="img\Receivers.png" />
+    <None Include="img\dollar_small.png" />
+    <None Include="img\Play.png" />
+    <None Include="img\Stop.png" />
+    <Content Include="img\TMB.png" />
+    <None Include="img\reports.png" />
+    <None Include="img\money.png" />
+    <None Include="img\administration.png" />
+    <Content Include="img\NewFile.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="TMB" Class="TMBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.\SQLEXPRESS_2012;Initial Catalog=TMB;Persist Security Info=True;User ID=sa" SettingsObjectName="TMBSupportApp.Properties.Settings" SettingsPropertyName="TMBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Bank" Member="Banks">
+    <Type Name="Bank">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Code" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="InternalID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SFNName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="FDCName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Bank_BankUser" Member="BankUsers" ThisKey="ID" OtherKey="BankID" Type="BankUser" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BankUsers" Member="BankUsers">
+    <Type Name="BankUser">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="InternalID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="BankID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FullName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="ManualType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ElectronicType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContactDetails" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Bank_BankUser" Member="Bank" ThisKey="BankID" OtherKey="ID" Type="Bank" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

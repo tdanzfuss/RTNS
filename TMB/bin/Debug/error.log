@@ -1,0 +1,8 @@
+System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:51236
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.WebClient.OpenRead(Uri address)
+   at System.Net.WebClient.OpenRead(String address)
+   at TMB.Reuters.RTNSReferenceFile.RefreshAdminUrl() in E:\RTNS\src\TMB\TMB\Reuters\RTNSReferenceFile.cs:line 124
+   at TMB.Reuters.RTNSReferenceFile.Save() in E:\RTNS\src\TMB\TMB\Reuters\RTNSReferenceFile.cs:line 106
